@@ -27,15 +27,12 @@ bool Blockchain::isChainValid() const{
         const Block* currentBlock  = chain[i].get();
         const Block* previousBlock = chain[i-1].get();
 
-        // 1. Integridad interna: los datos no fueron alterados
         if(currentBlock->getHash() != currentBlock->calculateHash())
             return false;
 
-        // 2. Encadenamiento: el eslabón apunta al anterior
         if(currentBlock->getPreviousHash() != previousBlock->getHash())
             return false;
 
-        // 3. Proof of Work: el bloque hizo el trabajo
         if(currentBlock->getHash().substr(0, difficulty) != target)
             return false;
     }
