@@ -22,4 +22,10 @@ public:
     std::string getPreviousHash() const;
 
     void mineBlock(uint32_t difficulty);
+    int         getIndex() const;
+std::string getData()  const;
+uint32_t    getNonce() const;
+
+// Solo para el simulador de ataques: altera los datos SIN recalcular el hash
+void tamperData(const std::string& fakeData);
 };
